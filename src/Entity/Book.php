@@ -38,6 +38,11 @@ class Book
         $this->authors = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->title . ' (' . $this->year . ')';
+    }
+
     public function getId()
     {
         return $this->id;

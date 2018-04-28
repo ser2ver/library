@@ -43,6 +43,13 @@ class Author
         $this->books = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->last . ' ' .
+              ($this->first ? (mb_substr($this->first, 0, 1) . '.') : '') .
+              ($this->middle ? (mb_substr($this->middle, 0, 1) . '.') : '');
+    }
+
     public function getId()
     {
         return $this->id;
