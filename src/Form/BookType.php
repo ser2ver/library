@@ -12,9 +12,9 @@ class BookType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('year')
-            ->add('authors')
+            ->add('title', null, ['label' => 'Название'])
+            ->add('year', null, ['label' => 'Год издания'])
+            ->add('authors', null, ['label' => 'Авторы'])
         ;
     }
 

@@ -20,7 +20,10 @@ class AuthorController extends Controller
      */
     public function index(AuthorRepository $authorRepository): Response
     {
-        return $this->render('author/index.html.twig', ['authors' => $authorRepository->findAll()]);
+        $criteria = [];
+        $authors = $authorRepository->findBy($criteria,
+            ['last' => 'ASC', 'first' => 'ASC', 'middle' => 'ASC']);
+        return $this->render('author/index.html.twig', ['authors' => $authors]);
     }
 
     /**

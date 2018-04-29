@@ -20,7 +20,10 @@ class BookController extends Controller
      */
     public function index(BookRepository $bookRepository): Response
     {
-        return $this->render('book/index.html.twig', ['books' => $bookRepository->findAll()]);
+        $criteria = [];
+        $books = $bookRepository->findBy($criteria,
+            ['title' => 'ASC', 'year' => 'ASC']);
+        return $this->render('book/index.html.twig', ['books' => $books]);
     }
 
     /**
