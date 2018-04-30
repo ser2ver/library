@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Author;
 use App\Form\AuthorType;
 use App\Repository\AuthorRepository;
+use Doctrine\ORM\Query\Expr\Join;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,9 +21,14 @@ class AuthorController extends Controller
      */
     public function index(AuthorRepository $authorRepository): Response
     {
-        $criteria = [];
-        $authors = $authorRepository->findBy($criteria,
-            ['last' => 'ASC', 'first' => 'ASC', 'middle' => 'ASC']);
+        $authors = $authorRepository->createQueryBuilder('a')
+            ->addSelect('COUNT(b.id) AS cnt')
+            ->leftJoin('a.books', 'b')
+            ->addGroupBy('a.id')
+            ->addGroupBy('a.last')
+            ->addGroupBy('a.first')
+            ->addGroupBy('a.middle')
+            ->getQuery()->execute();
         return $this->render('author/index.html.twig', ['authors' => $authors]);
     }
 

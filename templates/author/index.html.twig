@@ -20,13 +20,13 @@
         {% for author in authors %}
             <tr>
                 <td>{{ loop.index }}</td>
-                <td>{{ author.last }}</td>
-                <td>{{ author.first }}</td>
-                <td>{{ author.middle }}</td>
-                <td><a href="{{ path('book_index', {'aid': author.id}) }}"> {{author.books.count }}</a></td>
+                <td>{{ author[0].last }}</td>
+                <td>{{ author[0].first }}</td>
+                <td>{{ author[0].middle }}</td>
+                <td><a href="{{ path('book_index', {'aid': author[0].id}) }}"> {{ author.cnt }}</a></td>
                 <td>
-                    <a href="{{ path('author_show', {'id': author.id}) }}">Просмотр</a>
-                    <a href="{{ path('author_edit', {'id': author.id}) }}">Редактирование</a>
+                    <a href="{{ path('author_show', {'id': author[0].id}) }}">Просмотр</a>
+                    <a href="{{ path('author_edit', {'id': author[0].id}) }}">Редактирование</a>
                 </td>
             </tr>
         {% else %}
