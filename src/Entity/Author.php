@@ -35,6 +35,7 @@ class Author
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Book", mappedBy="authors")
+     * @ORM\OrderBy({"title" = "ASC", "year" = "ASC"})
      */
     private $books;
 

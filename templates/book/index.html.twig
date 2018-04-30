@@ -25,12 +25,12 @@
                     {% for author in book.authors %}
                         {{ author }}{% if not loop.last %}, {% endif %}
                     {% else %}
-                        Неизвестно
+                        ---
                     {% endfor %}
                 </td>
                 <td>
-                    <a href="{{ path('book_show', {'id': book.id}) }}">Просмотр</a>
-                    <a href="{{ path('book_edit', {'id': book.id}) }}">Редактирование</a>
+                    <a href="{{ path('book_show', {'id': book.id, 'aid': author.id}) }}">Просмотр</a>
+                    <a href="{{ path('book_edit', {'id': book.id, 'aid': author.id}) }}">Редактирование</a>
                 </td>
             </tr>
         {% else %}
@@ -41,5 +41,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('book_new') }}">Добавить книгу</a>
+    <a href="{{ path('author_index') }}">Вернуться к списку Авторов</a><br/>
+
+    <a href="{{ path('book_new', {'aid': author.id}) }}">Добавить книгу</a>
 {% endblock %}

@@ -1,4 +1,19 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
+    <div>
+        <table>
+            <tr>
+                <td>Книги</td>
+                <td>
+                    {% for book in author.books %}
+                        {{ book }}<br/>
+                    {% else %}
+                        У вас пока нет книг этого Автора<br/>
+                    {% endfor %}
+                    <a href="{{ path('book_index', {'aid': author.id}) }}">Редактировать Книги</a>
+                </td>
+            </tr>
+        </table>
+    </div>
     <button class="btn">{{ button_label|default('Сохранить') }}</button>
 {{ form_end(form) }}

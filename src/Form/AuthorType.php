@@ -16,7 +16,7 @@ class AuthorType extends AbstractType
             ->add('last', null, ['label' => 'Фамилия'])
             ->add('first', null, ['label' => 'Имя'])
             ->add('middle', null, ['label' => 'Отчество'])
-            ->add('books', null, ['label' => 'Книги'])
+//            ->add('books', null, ['label' => 'Книги'])
         ;
     }
 

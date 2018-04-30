@@ -23,7 +23,7 @@
                 <td>{{ author.last }}</td>
                 <td>{{ author.first }}</td>
                 <td>{{ author.middle }}</td>
-                <td>{{ author.books.count }}</td>
+                <td><a href="{{ path('book_index', {'aid': author.id}) }}"> {{author.books.count }}</a></td>
                 <td>
                     <a href="{{ path('author_show', {'id': author.id}) }}">Просмотр</a>
                     <a href="{{ path('author_edit', {'id': author.id}) }}">Редактирование</a>

@@ -30,6 +30,7 @@ class Book
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Author", inversedBy="books")
+     * @ORM\OrderBy({"last" = "ASC", "first" = "ASC", "middle" = "ASC"})
      */
     private $authors;
 

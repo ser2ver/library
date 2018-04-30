@@ -7,5 +7,5 @@
 
     {{ include('book/_form.html.twig') }}
 
-    <a href="{{ path('book_index') }}">Вернуться к списку Книг</a>
+    <a href="{{ path('book_index', {'aid': author.id}) }}">Вернуться к списку Книг</a>
 {% endblock %}
